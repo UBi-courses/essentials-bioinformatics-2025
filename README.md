@@ -61,10 +61,20 @@ We recommend using **Conda** or **Docker** to ensure reproducibility.
 
 ## 👩‍🏫 Instructors
 
-- Dr. Luisa Berná – Institut Pasteur de Montevideo  
-- Dr. Johannes Köster – University of Duisburg-Essen  
-- Dr. Rodrigo Ceni – Universidad de la República / Institut Pasteur de Montevideo  
+- Dra. Luisa Berná – Institut Pasteur de Montevideo / Universidad de la República  
+- Dra. Tamara Fernández - Institut Pasteur de Montevideo / Universidad Católica  
+- Dr. Pablo Fresia – Institut Pasteur de Montevideo  
+- Dr. Martín Graña – Institut Pasteur de Montevideo  
+- Dra. Daniela Megrián – Institut Pasteur de Montevideo  
+- Dr. Hugo Naya – Institut Pasteur de Montevideo / Universidad de la República  
+- Dra. Natalia Rego – Institut Pasteur de Montevideo / Universidad de la República  
+- Dra. Camila Simoes – Institut Pasteur de Montevideo  
+- Dra. Lucía Spangenberg – Institut Pasteur de Montevideo / Universidad de la República  
 
+## 👩‍🏫 Instructors from abroad: 
+
+- Dra. Ana Conesa - Institute for Integrative Systems Biology (Spain) 🇪🇸
+- Dr. Gonzalo Bello -Instituto Oswaldo Cruz (Brazil) 🇧🇷 
 ---
 
 ✉️ For questions during the course, please use the course Slack/Discord channel.
