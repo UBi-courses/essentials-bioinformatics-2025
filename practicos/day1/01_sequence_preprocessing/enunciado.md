@@ -4,9 +4,12 @@
 In a genome sequencing project using Illumina technology, the DNA of the target organism is fragmented into millions of small pieces during library preparation. The resulting sequences (reads) vary between ~36 and 300 nucleotides in length, depending on the platform. These reads can be **single-end** or **paired-end**.
 
 
-Paired-end reads are generated when both ends of DNA fragments are sequenced (the fragments are longer than the reads themselves). Sequencing proceeds inward from both ends, producing two reads per fragment with a known approximate insert size (more precisely, a random variable with a known distribution). This additional information from paired-end reads is very useful during the genome assembly process.
+Paired-end reads are generated when both ends of DNA fragments are sequenced (the fragments are longer than the reads themselves). Sequencing proceeds inward from both ends, producing two reads per fragment with a known approximate insert size (more precisely, a random variable with a known distribution). This additional information from paired-end reads is very useful during the genome assembly process.  
 
-![short insert](img/shor-insert.png)
+
+![short insert](img/shor-insert.png)  
+&nbsp;
+
 Genome assembly refers to the process of taking a set of short DNA sequences (reads) that represent a random collection of the genome, and “stitching” them together to create a representation of the original chromosomes. The goal of an assembler is to produce long contiguous sequences (contigs) from these reads. This is a computationally complex problem, further complicated by the presence of repetitive sequences in genomes.
 
 In this guide we will:
@@ -28,15 +31,18 @@ NCBI-SRA (https://www.ncbi.nlm.nih.gov/sra) is a public repository for primary s
 
 Example workflow:
 ```bash
+# only an example, do not run it
 prefetch SRR8922830
 fastq-dump --split-files SRR8922830.sra
 ```
 Alternatively, fastq-dump can take the accession number directly, downloading and converting on the fly:
 
 ```bash
-Copiar código
+# download only 1 million reads
 fastq-dump -X 1000000 --split-files SRR8922830
 ```
+
+
 Here:
 
 -X 1000000 → download only 1 million reads
@@ -99,6 +105,7 @@ fastqc SRR8922830_1.fastq SRR8922830_2.fastq
 This generates .html reports viewable in a browser.
 
 ![FastQC report](img/fastqc.png)
+&nbsp;
 
 ## Filtering and trimming reads
 ### Sickle
