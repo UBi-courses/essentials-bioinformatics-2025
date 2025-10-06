@@ -1,4 +1,7 @@
 # Essentials of Bioinformatics for Genomic Analysis
+<p align="center">
+  <img src="img/logo.png" alt="Course logo" width="250"/>
+</p>
 
 📅 Date: October 13–17, 2025  
 📍 Institut Pasteur de Montevideo  
@@ -7,6 +10,7 @@ This repository contains the **practical and theoretical materials** of the cour
 Each day includes:
 - **Slides (morning theoretical sessions)**
 - **Hands-on practicals (afternoon sessions)**
+
 
 ---
 
@@ -17,39 +21,40 @@ Each day includes:
 - **Practicals**:  
   - [Practical 1: Sequence preprocessing](practicos/day1/01_sequence_preprocessing/enunciado.md)  
   - [Practical 2: Genome assembly](practicos/day1/02_genome_assembly/enunciado.md)  
-  - [Practical 3: Genome annotation](practicos/day1/03_genome_annotation/enunciado.md)  
+  - [Practical 3: Assembly evaluation](practicos/day1/03_assembly_evaluation/enunciado.md)  
+  - [Practical 4: Genome annotation](practicos/day1/04_genome_annotation/enunciado.md)  
 
 ---
 
 ### **Day 2 – Transcriptomics**
 - **Slides**: [Download PDF](slides/day2_transcriptomics.pdf)  
 - **Practicals**:  
-  - [Practical 4: RNA-seq Mapping and Quantification](practicos/day2/04_rnaseq_mapping/enunciado.md)  
-  - [Practical 5: Differential Expression Analysis](practicos/day2/05_deseq2/enunciado.md)  
+  - [Practical 5: RNA-seq Mapping and Quantification](practicos/day2/05_rnaseq_mapping/enunciado.md)  
+  - [Practical 6: Differential Expression Analysis](practicos/day2/06_deseq2/enunciado.md)  
 
 ---
 
 ### **Day 3 – Variant Calling**
 - **Slides**: [Download PDF](slides/day3_variant_calling.pdf)  
 - **Practicals**:  
-  - [Practical 6: SNP and Indel Calling](practicos/day3/06_variant_calling/enunciado.md)  
-  - [Practical 7: Variant Filtering and Annotation](practicos/day3/07_variant_annotation/enunciado.md)  
+  - [Practical 7: SNP and Indel Calling](practicos/day3/07_variant_calling/enunciado.md)  
+  - [Practical 8: Variant Filtering and Annotation](practicos/day3/08_variant_annotation/enunciado.md)  
 
 ---
 
 ### **Day 4 – Comparative Genomics and Phylogeny**
 - **Slides**: [Download PDF](slides/day4_comparative_phylogeny.pdf)  
 - **Practicals**:  
-  - [Practical 8: Comparative Genomics](practicos/day4/08_comparative_genomics/enunciado.md)  
-  - [Practical 9: Phylogenetic Analysis](practicos/day4/09_phylogenetics/enunciado.md)  
+  - [Practical 9: Comparative Genomics](practicos/day4/09_comparative_genomics/enunciado.md)  
+  - [Practical 10: Phylogenetic Analysis](practicos/day4/10_phylogenetics/enunciado.md)  
 
 ---
 
 ### **Day 5 – Protein Structure**
 - **Slides**: [Download PDF](slides/day5_protein_structure.pdf)  
 - **Practicals**:  
-  - [Practical 10: Protein Structure Prediction](practicos/day5/10_structure_prediction/enunciado.md)  
-  - [Practical 11: Structural Analysis](practicos/day5/11_structure_analysis/enunciado.md)  
+  - [Practical 11: Protein Structure Prediction](practicos/day5/11_structure_prediction/enunciado.md)  
+  - [Practical 12: Structural Analysis](practicos/day5/12_structure_analysis/enunciado.md)  
 
 ---
 
