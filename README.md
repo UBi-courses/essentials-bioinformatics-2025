@@ -69,7 +69,7 @@ We recommend using **Conda** or **Docker** to ensure reproducibility.
 
 - Dra. Luisa Berná – Institut Pasteur de Montevideo / Universidad de la República  
 - Dra. Tamara Fernández - Institut Pasteur de Montevideo / Universidad Católica  
-- Dr. Pablo Fresia – Institut Pasteur de Montevideo  
+- Dr. Pablo Fresia – Institut Pasteur de Montevideo / Universidad de la República 
 - Dr. Martín Graña – Institut Pasteur de Montevideo  
 - Dra. Daniela Megrián – Institut Pasteur de Montevideo  
 - Dr. Hugo Naya – Institut Pasteur de Montevideo / Universidad de la República  
