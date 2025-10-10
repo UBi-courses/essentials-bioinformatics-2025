@@ -3,11 +3,7 @@
 In this practical we will perform gene prediction on the assembled genomes of *Saccharomyces cerevisiae* using the web tool Augustus.
 Augustus can combine statistical models (ab initio), gene expression data, and evolutionary conservation to predict gene structures.
 In our case, we will use a combination of Hidden Markov Models (HMM) and expression data, and we will then evaluate the predictions using BUSCO (Benchmarking Universal Single-Copy Orthologs).
-Finally, we will perform functional annotation of the predicted genes using two complementary approaches:
 
-- BLAST searches against the UniProt-SwissProt database (a manually curated protein and functional annotation database).
-
-- Blast-Koala for functional annotation and EC number assignment.
 
 ---
 
@@ -16,6 +12,18 @@ We also observed that Illumina-only assemblies generated with ABySS were more fr
 
 ---
 
+
+
+## ⚠️  Before starting
+
+Before starting this practical, make sure to activate the conda environment that contains the required programs.
+This ensures that all tools are available from the command line.
+
+   ```bash
+   conda activate day1
+   ```
+   
+---
 
 ##  📔 Part A – Gene Prediction
 
@@ -38,8 +46,8 @@ To do this, inspect the BLAST output comparing your assembly against the referen
 ⚠️ Warning: If you are not currently inside the folder containing the BLAST results, you must provide the full path to the BLAST output file.
 
 ```bash
-grep "_C_II|" yeastk94_vs_Ref.blast | awk '{print $1}' | sort | uniq > names_ch2_abyss.txt
-grep "_C_II|" yeastFly_vs_Ref.blast | awk '{print $1}' | sort | uniq > names_ch2_flye.txt
+grep "_C_II|" yeastk94_vs_Ref.blast | awk '$4>1000'  | awk '{print $1}' | sort | uniq > names_ch2_abyss.txt
+grep "_C_II|" yeastFly_vs_Ref.blast | awk '$4>10000' | awk '{print $1}' | sort | uniq > names_ch2_flye.txt
 ```
 
 2. Generate a FASTA file containing only the contigs that match Chromosome II.
@@ -47,13 +55,16 @@ grep "_C_II|" yeastFly_vs_Ref.blast | awk '{print $1}' | sort | uniq > names_ch2
 ⚠️ Warning: If you are not inside the folder where your input files are located, you must specify the complete path to them.
 
 ```bash
-seqkit grep -f names_ch2_flye.txt ABYSS94-scaffolds.fa > Ch2_abyss.fas
-seqkit grep -f names_ch2_flye.txt assembly.fasta > Ch2_flye.fas
+seqkit grep -f names_ch2_abyss.txt abyss_yeast/yeast_k94-scaffolds.fa > Ch2_abyss.fas
+seqkit grep -f names_ch2_flye.txt flye_yeast/assembly.fasta > Ch2_flye.fas
 ```
+
+---
+
 
 ### ✏️ A.2. Running Augustus web interface
 
-Open two tabs of the Augustus web interface.
+Open two tabs of the Augustus **web interface**.
 In each one, run a prediction for the Illumina assembly and the Flye assembly.
 Select *Saccharomyces cerevisiae* as the species.
 Click The graphical and text results are here, then right-click on text results (gff) and open in a new tab.
@@ -93,6 +104,8 @@ infoseq -only -length file.cds | awk '{ sum += $1} END { print sum/NR }'
 ```
 
 - 🧩 Discuss: What differences do you observe between the predictions from both assemblies?
+
+---
 
 
 ### ✏️ A.3. Genome-wide gene prediction with Augustus
@@ -135,6 +148,20 @@ augustus.gtf        # gene predictions in GTF format
 
 augustus.gff        # gene predictions in GFF format
 
+Also are available at 
+You can copy the aminoacid prediction to perform the BUSCO evaluation
+
+```bash
+cp /mnt/lab/Data/day1/augustus_abyss/augustus_abyss.aa ./
+cp /mnt/lab/Data/day1/augustus_flye/augustus_flye.aa ./
+```
+
+- 🧩 **Discuss the results**
+
+- How many proteins were predicted for abyss and how many for flye?
+- Why do you think this result occurred?
+---
+
 
 ### ✏️ Part A.4 – Evaluating Predictions with BUSCO
 
@@ -155,6 +182,9 @@ Copy your predicted protein files and run BUSCO:
 # For amino acid sequences from abyss assembly:
 busco -i augustus_abyss.aa -o BUSCO_abyss -l saccharomycetes_odb10 -m proteins -f
 # For amino acids from Flye assembly: 
-busco -i augustus_nanoporeFlye.aa -o BUSCO_nanoporeF -l saccharomycetes_odb10 -m proteins -f
+busco -i augustus_flye.aa -o BUSCO_nanoporeF -l saccharomycetes_odb10 -m proteins -f
 
 ```
+
+
+- 🧩 **Discuss the results**
