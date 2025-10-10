@@ -1,7 +1,11 @@
 # Essentials of Bioinformatics for Genomic Analysis
+
+
 <p align="center">
-  <img src="img/logo.png" alt="Course logo" width="250"/>
+  <img src="./img/logo.png" alt="Course logo" width="250"/>
 </p>
+
+
 
 📅 Date: October 13–17, 2025  
 📍 Institut Pasteur de Montevideo  
