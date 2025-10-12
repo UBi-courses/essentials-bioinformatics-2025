@@ -438,6 +438,7 @@ session. In other words, it prevents the process from being terminated
 when you log out or disconnect from the shell. This is particularly
 useful for long-running tasks, such as genome assemblies. For
 example:</p>
+<p>✅</p>
 <pre class="bash"><code>nohup abyss-pe name=yeast_k94 k=94 in=&#39;/mnt/lab/Data/day1/illumina_reads/SRR8922830_1.fastq /mnt/lab/Data/day1/illumina_reads/SRR8922830_2.fastq&#39; B=10G &amp;
 </code></pre>
 <ul>
@@ -493,7 +494,7 @@ Because Canu does not rely on quality scores, both
 <strong>FASTA</strong> and <strong>FASTQ</strong> input formats are
 accepted.</p>
 <p>⛔ Example command:</p>
-<pre class="bash"><code>canu -p yeast -d canu_yeast genomeSize=12m -nanopore-raw ../raw_data/longreads/SRR5989372.fastq</code></pre>
+<pre class="bash"><code>canu -p yeast -d canu_yeast genomeSize=12m -nanopore-raw /mnt/lab/Data/day1/nanopore_reads/SRR5989372.fastq</code></pre>
 <hr />
 </div>
 <div id="assembly-with-flye" class="section level3">
@@ -508,7 +509,7 @@ specifying the type of long reads using the options:</p>
 <li><p>or the corrected equivalents (–pacbio-corr, –nano-corr).</p></li>
 </ul>
 <p>Run the program using the provided Nanopore reads:</p>
-<pre class="bash"><code>flye --nano-raw ../raw_data/longreads/SRR5989372.fastq --genome-size 12m --out-dir flye_yeast</code></pre>
+<pre class="bash"><code>flye --nano-raw /mnt/lab/Data/day1/nanopore_reads/SRR5989372.fastq --genome-size 12m --out-dir flye_yeast</code></pre>
 <p>📌 Note: Flye will automatically create a directory (flye_yeast) to
 store intermediate files and the final assembly (assembly.fasta). This
 process may take several minutes depending on the computational
