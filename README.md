@@ -1,9 +1,9 @@
 # Essentials of Bioinformatics for Genomic Analysis
 
-![Course logo](img/logo.png)
+![Course logo](img/logo.jpg)
 
 <p align="center">
-  <img src="./img/logo.png" alt="Course logo" width="200"/>
+  <img src="./img/logo.jpg" alt="Course logo" width="200"/>
 </p>
 
 
