@@ -33,8 +33,8 @@ Each day includes:
 ### **Day 2 – Transcriptomics**
 - **Slides**: [Download PDF](slides/day2_transcriptomics.pdf)  
 - **Practicals**:  
-  - [Practical 5: RNA-seq Mapping and Quantification](practicos/day2/05_rnaseq_mapping/enunciado.md)  
-  - [Practical 6: Differential Expression Analysis](practicos/day2/06_deseq2/enunciado.md)  
+  - [Practical 1: IGV_visualization](practicos/day2/2A_IGV_visualization/practico2A.md)  
+  - [Practical 2: Long Read quantification](practicos/day2/2BC_Long_Read_Quantification/practico2BC.md)  
 
 ---
 
