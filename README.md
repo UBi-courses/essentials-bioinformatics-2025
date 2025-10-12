@@ -21,7 +21,7 @@ Each day includes:
 ## 📅 Course Schedule & Materials
 
 ### **Day 1 – Genome Assembly and Annotation**
-- **Slides**: [Download PDF](slides/day1_assembly_annotation.pdf)  
+- **Slides**: [Ensamblaje genómico](slides/ensamblaje.pdf)  
 - **Practicals**:  
   - [Practical 1: Sequence preprocessing](practicos/day1/01_sequence_preprocessing/enunciado.md)  
   - [Practical 2: Genome assembly](practicos/day1/02_genome_assembly/enunciado.md)  
