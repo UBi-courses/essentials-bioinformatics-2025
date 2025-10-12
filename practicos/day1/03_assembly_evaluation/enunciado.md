@@ -50,7 +50,7 @@ Understanding which files are the final assembly and which are intermediate resu
 
 ## 🔬 Evaluation of Illumina assemblies
 
-1. **Copy the assemblies** generated with `abyss-pe` from /mnt/lab/Data/day1/abyss_yeast/ to your own folder.
+1. **Copy the assemblies** generated with *abyss-pe* from /mnt/lab/Data/day1/abyss_yeast/ to your own folder.
 
    ```bash
    cp -r /mnt/lab/Data/day1/abyss_yeast/ ./
@@ -66,13 +66,16 @@ Understanding which files are the final assembly and which are intermediate resu
    
 3. Obtain assembly statistics using the infoseq tool (from the EMBOSS package) *infoseq -help* to visualize the options
    ```bash
-        infoseq -only -name -length -pgc yeast_k94-scaffolds.fa> table.out
+infoseq -only -name -length -pgc yeast_k94-scaffolds.fa> table.out
    ```
-This generates a table listing each contig’s name, length, and GC content. 🧩 Visualize **table.out**
+  This generates a table listing each contig’s name, length, and GC content. 
+  
+  🧩 Visualize **table.out**. 
+  
 
 <font color="green">
 
-### 🧩 4. Analyze the results:
+#### 🧩 4. Analyze the results:
 
 * Longest contig: **sort -n -k2 table.out**
 * Number of contigs > 1 kb: **awk \'$2>1000\' table.out | wc -l**
@@ -81,7 +84,7 @@ This generates a table listing each contig’s name, length, and GC content. �
 </font>
 
   
-####  Global summary:
+#### Global summary:
 
 5. The N50 value (as well as N90, L50, L90, total length, etc) can be calculated manually, for example by analyzing the table.out file in Excel or using command-line tools such as awk. However, there are already scripts and programs available that automatically generate the most common and relevant assembly statistics.
 One of these tools is abyss-fac, which summarizes key metrics such as the total assembly length, number of contigs, N50, L50, and GC content in a single report.
@@ -89,9 +92,9 @@ One of these tools is abyss-fac, which summarizes key metrics such as the total 
    ```bash
     abyss-fac yeast_k94-scaffolds.fa
    ```
-
+  
 6. Generate a sub-assembly containing only contigs >2 kb:
-
+  
    ```bash
 awk '$2>2000 {print $1}' table.out > names.txt
 # con grep 
@@ -99,8 +102,11 @@ grep -A1 -w -f names.txt yeast_k94-scaffolds.fa > contigs2Kb_abyss.fas
 # con seqkit
 seqkit grep -f names.txt yeast_k94-scaffolds.fa > contigs2Kb_abyss.fas
    ```
+   
+
 
 7. Compare your assembly to the reference genome (*S. cerevisiae* strain S288c) using BLASTN, and examine how many contigs align to each chromosome.
+
   
 - 7.1. To do this, we will copy the reference assembly of the *Saccharomyces cerevisiae S288c* strain located at
 /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas
@@ -109,48 +115,44 @@ into our working directory.
   ```bash
   # Check the current working directory
   pwd
-  
   # Move one level up (to exit the abyss folder)
   cd ..
-  
   # Copy the yeast reference genome to the current directory
   cp /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas ./
   ```
-  7.2. Run blastn
+  
+- 7.2. Run blastn
   
   ```bash
 blastn -query abyss_yeast/yeast_k94-scaffolds.fa -subject YEAST_chromosome.fas -outfmt '6 std qlen slen' -out yeastk94_vs_Ref.blast
   ```
-#### 🧩 7.3. Analyze the results:
-
+- 🧩 7.3. **Analyze the results:**
 
   ```bash
   # View the first lines of the BLAST output
   head yeastk94_vs_Ref.blast 
-  
   # View only alignments longer than 10 Kb
   awk '$4 > 10000' yeastk94_vs_Ref.blast 
-  
   # View only alignments longer than 10 Kb corresponding to Chromosome VIII
   awk '$4 > 10000' yeastk94_vs_Ref.blast | grep C_VIII
   ```
+  
 
-   
 ## 🧬 Evaluation of long-read assemblies
 
 1. Visualize the final assemblies generated with Flye and copy the final output to your directory:
-
+  
    ```bash
   ls /mnt/lab/Data/day1/flye_yeast/
   cp /mnt/lab/Data/day1/flye_yeast/assembly.fasta ./
    ```
-
+   
 2. Compute basic statistics using abyss-fac:
 
    ```bash
 abyss-fac assembly.fasta
    ```
-
+   
 3. Compare your assembly to the reference genome (*S. cerevisiae* strain S288c) using BLASTN, and examine how many contigs align to each chromosome.
 
    ```bash
@@ -208,7 +210,7 @@ Inspect the dot-plot to identify regions of strong synteny, potential rearrangem
 
 
 
-###   🔁 Exploring repeats with YASS
+### 🔁 Exploring repeats with YASS
 
 YASS can be used to create dot-plots comparing a sequence to itself, which helps identify repeated regions and inversions.
 

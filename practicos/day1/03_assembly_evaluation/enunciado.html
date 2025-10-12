@@ -418,7 +418,7 @@ evaluating assembly quality.</p>
 <h2>🔬 Evaluation of Illumina assemblies</h2>
 <ol style="list-style-type: decimal">
 <li><p><strong>Copy the assemblies</strong> generated with
-<code>abyss-pe</code> from /mnt/lab/Data/day1/abyss_yeast/ to your own
+<em>abyss-pe</em> from /mnt/lab/Data/day1/abyss_yeast/ to your own
 folder.</p>
 <pre class="bash"><code>cp -r /mnt/lab/Data/day1/abyss_yeast/ ./</code></pre></li>
 <li><p><strong>Explore the results</strong> in your working
@@ -428,13 +428,14 @@ ls -l
 head coverage.hist</code></pre></li>
 <li><p>Obtain assembly statistics using the infoseq tool (from the
 EMBOSS package) <em>infoseq -help</em> to visualize the options</p>
-<pre class="bash"><code>     infoseq -only -name -length -pgc yeast_k94-scaffolds.fa&gt; table.out</code></pre>
+<pre class="bash"><code>infoseq -only -name -length -pgc yeast_k94-scaffolds.fa&gt; table.out</code></pre>
 <p>This generates a table listing each contig’s name, length, and GC
-content. 🧩 Visualize <strong>table.out</strong></p></li>
+content.</p></li>
 </ol>
+<p>🧩 Visualize <strong>table.out</strong>.</p>
 <p><font color="green"></p>
-<div id="analyze-the-results" class="section level3">
-<h3>🧩 4. Analyze the results:</h3>
+<div id="analyze-the-results" class="section level4">
+<h4>🧩 4. Analyze the results:</h4>
 <ul>
 <li>Longest contig: <strong>sort -n -k2 table.out</strong></li>
 <li>Number of contigs &gt; 1 kb: <strong>awk &#39;$2&gt;1000&#39; table.out | wc
@@ -443,6 +444,7 @@ content. 🧩 Visualize <strong>table.out</strong></p></li>
 table.out</strong></li>
 </ul>
 <p></font></p>
+</div>
 <div id="global-summary" class="section level4">
 <h4>Global summary:</h4>
 <ol start="5" style="list-style-type: decimal">
@@ -472,15 +474,13 @@ align to each chromosome.</p></li>
 directory.</p>
 <pre class="bash"><code># Check the current working directory
 pwd
-
 # Move one level up (to exit the abyss folder)
 cd ..
-
 # Copy the yeast reference genome to the current directory
-cp /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas ./</code></pre>
-<p>7.2. Run blastn</p>
-<pre class="bash"><code>blastn -query abyss_yeast/yeast_k94-scaffolds.fa -subject YEAST_chromosome.fas -outfmt &#39;6 std qlen slen&#39; -out yeastk94_vs_Ref.blast</code></pre>
-<h4 id="analyze-the-results-1">🧩 7.3. Analyze the results:</h4>
+cp /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas ./</code></pre></li>
+<li><p>7.2. Run blastn</p>
+<pre class="bash"><code>blastn -query abyss_yeast/yeast_k94-scaffolds.fa -subject YEAST_chromosome.fas -outfmt &#39;6 std qlen slen&#39; -out yeastk94_vs_Ref.blast</code></pre></li>
+<li><p>🧩 7.3. <strong>Analyze the results:</strong></p>
 <pre class="bash"><code># View the first lines of the BLAST output
 head yeastk94_vs_Ref.blast 
 
@@ -490,7 +490,6 @@ awk &#39;$4 &gt; 10000&#39; yeastk94_vs_Ref.blast
 # View only alignments longer than 10 Kb corresponding to Chromosome VIII
 awk &#39;$4 &gt; 10000&#39; yeastk94_vs_Ref.blast | grep C_VIII</code></pre></li>
 </ul>
-</div>
 </div>
 </div>
 <div id="evaluation-of-long-read-assemblies" class="section level2">
