@@ -396,9 +396,7 @@ assemblies.</p>
 <p>Before starting this practical, make sure to activate the conda
 environment that contains the required programs. This ensures that all
 tools are available from the command line.</p>
-<pre><code>```bash
-conda activate day1
-```</code></pre>
+<pre class="bash"><code>conda activate day1</code></pre>
 <hr />
 </div>
 <div id="understanding-assembly-output-files" class="section level2">
@@ -419,12 +417,14 @@ evaluating assembly quality.</p>
 <div id="evaluation-of-illumina-assemblies" class="section level2">
 <h2>🔬 Evaluation of Illumina assemblies</h2>
 <ol style="list-style-type: decimal">
-<li><p><strong>Copy the assemblies</strong> generated with
+<li><strong>Copy the assemblies</strong> generated with
 <em>abyss-pe</em> from /mnt/lab/Data/day1/abyss_yeast/ to your own
-folder.</p>
-<pre class="bash"><code>cp -r /mnt/lab/Data/day1/abyss_yeast/ ./</code></pre></li>
-<li><p><strong>Explore the results</strong> in your working
-directory:</p>
+folder.</li>
+</ol>
+<pre class="bash"><code>cp -r /mnt/lab/Data/day1/abyss_yeast/ ./</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Explore the results</strong> in your working directory:</li>
+</ol>
 <pre class="bash"><code>cd abyss_yeast/
 ls -l
 head coverage.hist</code></pre>
@@ -435,8 +435,7 @@ package) <em>infoseq -help</em> to visualize the options</li>
 <pre class="bash"><code>infoseq -only -name -length -pgc yeast_k94-scaffolds.fa&gt; table.out</code></pre>
 <p>This generates a table listing each contig’s name, length, and GC
 content.</p>
-<p>🧩 Visualize <strong>table.out</strong>.</p></li>
-</ol>
+<p>🧩 Visualize <strong>table.out</strong>.</p>
 <p><font color="green"></p>
 <div id="analyze-the-results" class="section level4">
 <h4>🧩 4. Analyze the results:</h4>
@@ -452,69 +451,83 @@ table.out</strong></li>
 <div id="global-summary" class="section level4">
 <h4>Global summary:</h4>
 <ol start="5" style="list-style-type: decimal">
-<li><p>The N50 value (as well as N90, L50, L90, total length, etc) can
-be calculated manually, for example by analyzing the table.out file in
+<li>The N50 value (as well as N90, L50, L90, total length, etc) can be
+calculated manually, for example by analyzing the table.out file in
 Excel or using command-line tools such as awk. However, there are
 already scripts and programs available that automatically generate the
 most common and relevant assembly statistics. One of these tools is
 abyss-fac, which summarizes key metrics such as the total assembly
 length, number of contigs, N50, L50, and GC content in a single
-report.</p>
-<pre class="bash"><code>  abyss-fac yeast_k94-scaffolds.fa</code></pre></li>
-<li><p>Generate a sub-assembly containing only contigs &gt;2 kb:</p>
+report.</li>
+</ol>
+<pre class="bash"><code>abyss-fac yeast_k94-scaffolds.fa</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Generate a sub-assembly containing only contigs &gt;2 kb:</li>
+</ol>
 <pre class="bash"><code>awk &#39;$2&gt;2000 {print $1}&#39; table.out &gt; names.txt
 # con grep 
 grep -A1 -w -f names.txt yeast_k94-scaffolds.fa &gt; contigs2Kb_abyss.fas
 # con seqkit
-seqkit grep -f names.txt yeast_k94-scaffolds.fa &gt; contigs2Kb_abyss.fas</code></pre></li>
-<li><p>Compare your assembly to the reference genome (<em>S.
+seqkit grep -f names.txt yeast_k94-scaffolds.fa &gt; contigs2Kb_abyss.fas</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Compare your assembly to the reference genome (<em>S.
 cerevisiae</em> strain S288c) using BLASTN, and examine how many contigs
-align to each chromosome.</p></li>
+align to each chromosome.</li>
 </ol>
 <ul>
-<li><p>7.1. To do this, we will copy the reference assembly of the
+<li>7.1. To do this, we will copy the reference assembly of the
 <em>Saccharomyces cerevisiae S288c</em> strain located at
 /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas into our working
-directory.</p>
+directory.</li>
+</ul>
 <pre class="bash"><code># Check the current working directory
 pwd
 # Move one level up (to exit the abyss folder)
 cd ..
 # Copy the yeast reference genome to the current directory
-cp /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas ./</code></pre></li>
-<li><p>7.2. Run blastn</p>
-<pre class="bash"><code>blastn -query abyss_yeast/yeast_k94-scaffolds.fa -subject YEAST_chromosome.fas -outfmt &#39;6 std qlen slen&#39; -out yeastk94_vs_Ref.blast</code></pre></li>
-<li><p>🧩 7.3. <strong>Analyze the results:</strong></p>
+cp /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas ./</code></pre>
+<ul>
+<li>7.2. Run blastn</li>
+</ul>
+<pre class="bash"><code>blastn -query abyss_yeast/yeast_k94-scaffolds.fa -subject YEAST_chromosome.fas -outfmt &#39;6 std qlen slen&#39; -out yeastk94_vs_Ref.blast</code></pre>
+<ul>
+<li>🧩 7.3. <strong>Analyze the results:</strong></li>
+</ul>
 <pre class="bash"><code># View the first lines of the BLAST output
 head yeastk94_vs_Ref.blast 
 # View only alignments longer than 10 Kb
 awk &#39;$4 &gt; 10000&#39; yeastk94_vs_Ref.blast 
 # View only alignments longer than 10 Kb corresponding to Chromosome VIII
-awk &#39;$4 &gt; 10000&#39; yeastk94_vs_Ref.blast | grep C_VIII</code></pre></li>
-</ul>
+awk &#39;$4 &gt; 10000&#39; yeastk94_vs_Ref.blast | grep C_VIII</code></pre>
 </div>
 </div>
 <div id="evaluation-of-long-read-assemblies" class="section level2">
 <h2>🧬 Evaluation of long-read assemblies</h2>
 <ol style="list-style-type: decimal">
-<li><p>Visualize the final assemblies generated with Flye and copy the
-final output to your directory:</p>
+<li>Visualize the final assemblies generated with Flye and copy the
+final output to your directory:</li>
+</ol>
 <pre class="bash"><code>ls /mnt/lab/Data/day1/flye_yeast/
-cp /mnt/lab/Data/day1/flye_yeast/assembly.fasta ./</code></pre></li>
-<li><p>Compute basic statistics using abyss-fac:</p>
-<pre class="bash"><code>abyss-fac assembly.fasta</code></pre></li>
-<li><p>Compare your assembly to the reference genome (<em>S.
+cp /mnt/lab/Data/day1/flye_yeast/assembly.fasta ./</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Compute basic statistics using abyss-fac:</li>
+</ol>
+<pre class="bash"><code>abyss-fac assembly.fasta</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Compare your assembly to the reference genome (<em>S.
 cerevisiae</em> strain S288c) using BLASTN, and examine how many contigs
-align to each chromosome.</p>
-<pre class="bash"><code>blastn -query assembly.fasta -subject YEAST_chromosome.fas -evalue 1e-200 -outfmt &quot;6 std qlen slen&quot; &gt; yeastFly_vs_Ref.blast</code></pre></li>
-<li><p>Analyze the results</p>
+align to each chromosome.</li>
+</ol>
+<pre class="bash"><code>blastn -query assembly.fasta -subject YEAST_chromosome.fas -evalue 1e-200 -outfmt &quot;6 std qlen slen&quot; &gt; yeastFly_vs_Ref.blast</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Analyze the results</li>
+</ol>
 <p>Discuss the BLAST results obtained. Examine how well your assembled
 contigs align with the reference genome. Consider whether the alignments
 are continuous or fragmented, and if some chromosomes appear more
 fragmented than others.</p>
 <p>Filter meaningful hits (for example, HSPs &gt;10 kb) and analyze how
-fragmented each chromosome is</p></li>
-</ol>
+fragmented each chromosome is</p>
 <p>✅</p>
 <pre class="bash"><code># View the first lines of the BLAST output
 head yeastFly_vs_Ref.blast 
@@ -535,20 +548,21 @@ nucleotide-level alignments between complete genomes or large contig
 sets.</li>
 </ul>
 <ol start="5" style="list-style-type: decimal">
-<li><p>To compare your assembly against the reference genome, run nucmer
+<li>To compare your assembly against the reference genome, run nucmer
 from the MUMmer package. This program performs pairwise nucleotide
 alignments between large sequences, such as complete genomes or
-assembled contigs.</p>
-<pre class="bash"><code># (Optional) Repeat with the S288c reference genome
-nucmer YEAST_chromosome.fas assembly.fasta -prefix assembly_vs_S288c</code></pre></li>
+assembled contigs.</li>
 </ol>
+<pre class="bash"><code># (Optional) Repeat with the S288c reference genome
+nucmer YEAST_chromosome.fas assembly.fasta -prefix assembly_vs_S288c</code></pre>
 <ul>
 <li><p>The command will produce an output file with the extension
 .delta, which contains the alignment information.</p></li>
 <li><p>📌 Next, open <a href="http://assemblytics.com/" class="uri">http://assemblytics.com/</a> in the browser of your virtual
-machine and upload the corresponding .delta file.</p>
-<p>Assemblytics is a powerful visualization and analysis tool
-that:</p></li>
+machine and upload the corresponding .delta file.</p></li>
+</ul>
+<p>Assemblytics is a powerful visualization and analysis tool that:</p>
+<ul>
 <li><p>Generates an interactive, zoomable dot-plot of the alignment,
 and</p></li>
 <li><p>Provides a detailed summary of structural variant statistics
@@ -567,8 +581,8 @@ segments.</p>
 <h3>🔁 Exploring repeats with YASS</h3>
 <p>YASS can be used to create dot-plots comparing a sequence to itself,
 which helps identify repeated regions and inversions.</p>
-<p>Example:
-<code>bash seqkit grep -p contig_17 flye_yeast/assembly.fasta &gt; contig_17.fasta</code></p>
+<p>Example:</p>
+<pre class="bash"><code>seqkit grep -p contig_17 flye_yeast/assembly.fasta &gt; contig_17.fasta</code></pre>
 <p>Upload the sequence to <a href="https://bioinfo.univ-lille.fr/yass/" class="uri">https://bioinfo.univ-lille.fr/yass/</a> and generate the
 self-alignment plot. Observe any internal repeats or symmetry patterns
 and discuss what genomic structures they may represent.</p>
