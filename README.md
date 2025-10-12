@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="./img/logo.png" alt="Course logo" width="250"/>
+  <img src="./img/logo.png" alt="Course logo" width="200"/>
 </p>
 
 
