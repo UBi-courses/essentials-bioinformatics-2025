@@ -3,7 +3,7 @@
 ![Course logo](img/logo.jpg)
 
 <p align="center">
-  <img src="./img/logo.jpg" alt="Course logo" width="200"/>
+  <img src="https://raw.githubusercontent.com/UBi-courses/essentials-bioinformatics-2025/main/img/logo.png" alt="Course logo" width="200"/>
 </p>
 
 
