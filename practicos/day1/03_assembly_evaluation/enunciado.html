@@ -428,16 +428,13 @@ ls -l
 head coverage.hist</code></pre></li>
 <li><p>Obtain assembly statistics using the infoseq tool (from the
 EMBOSS package) <em>infoseq -help</em> to visualize the options</p>
-<pre class="bash"><code> infoseq -only -name -length -pgc yeast_k94-scaffolds.fa&gt; table.out</code></pre>
+<pre class="bash"><code>     infoseq -only -name -length -pgc yeast_k94-scaffolds.fa&gt; table.out</code></pre>
 <p>This generates a table listing each contig’s name, length, and GC
 content. 🧩 Visualize <strong>table.out</strong></p></li>
 </ol>
 <p><font color="green"></p>
-<div id="section" class="section level3">
-<h3>🧩</h3>
-<ol start="4" style="list-style-type: decimal">
-<li>Analyze the results:</li>
-</ol>
+<div id="analyze-the-results" class="section level3">
+<h3>🧩 4. Analyze the results:</h3>
 <ul>
 <li>Longest contig: <strong>sort -n -k2 table.out</strong></li>
 <li>Number of contigs &gt; 1 kb: <strong>awk &#39;$2&gt;1000&#39; table.out | wc
@@ -483,7 +480,7 @@ cd ..
 cp /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas ./</code></pre>
 <p>7.2. Run blastn</p>
 <pre class="bash"><code>blastn -query abyss_yeast/yeast_k94-scaffolds.fa -subject YEAST_chromosome.fas -outfmt &#39;6 std qlen slen&#39; -out yeastk94_vs_Ref.blast</code></pre>
-<h4 id="analyze-the-results">🧩 7.3. Analyze the results:</h4>
+<h4 id="analyze-the-results-1">🧩 7.3. Analyze the results:</h4>
 <pre class="bash"><code># View the first lines of the BLAST output
 head yeastk94_vs_Ref.blast 
 
@@ -513,21 +510,19 @@ align to each chromosome.</p>
 <p>Discuss the BLAST results obtained. Examine how well your assembled
 contigs align with the reference genome. Consider whether the alignments
 are continuous or fragmented, and if some chromosomes appear more
-fragmented than others.</p>
-<p>Filter meaningful hits (for example, HSPs &gt;10 kb) and analyze how
-fragmented each chromosome is</p></li>
+fragmented than others.</p></li>
 </ol>
+<p>Filter meaningful hits (for example, HSPs &gt;10 kb) and analyze how
+fragmented each chromosome is</p>
 <p>✅</p>
-<ul>
-<li><pre class="bash"><code># View the first lines of the BLAST output
+<pre class="bash"><code># View the first lines of the BLAST output
 head yeastFly_vs_Ref.blast 
 
 # View only alignments longer than 10 Kb
 awk &#39;$4 &gt; 10000&#39; yeastFly_vs_Ref.blast
 
 # View only alignments longer than 10 Kb corresponding to Chromosome VIII
-awk &#39;$4 &gt; 10000&#39; yeastFly_vs_Ref.blast| grep C_VIII</code></pre></li>
-</ul>
+awk &#39;$4 &gt; 10000&#39; yeastFly_vs_Ref.blast| grep C_VIII</code></pre>
 <div id="whole-genome-alignment-with-mummer-and-visualization-in-assemblytics" class="section level3">
 <h3>👁️️ Whole-genome alignment with MUMmer and visualization in
 Assemblytics</h3>
@@ -544,9 +539,7 @@ from the MUMmer package. This program performs pairwise nucleotide
 alignments between large sequences, such as complete genomes or
 assembled contigs.</p>
 <pre class="bash"><code># (Optional) Repeat with the S288c reference genome
-nucmer YEAST_chromosome.fas assembly.fasta -prefix assembly_vs_S288c
-
-</code></pre></li>
+nucmer YEAST_chromosome.fas assembly.fasta -prefix assembly_vs_S288c</code></pre></li>
 </ol>
 <ul>
 <li><p>The command will produce an output file with the extension

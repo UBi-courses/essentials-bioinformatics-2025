@@ -50,26 +50,29 @@ Understanding which files are the final assembly and which are intermediate resu
 
 ## 🔬 Evaluation of Illumina assemblies
 
-1. **Copy the assemblies** generated with `abyss-pe` from /mnt/lab/Data/day1/abyss_yeast/ to your own folder.  
+1. **Copy the assemblies** generated with `abyss-pe` from /mnt/lab/Data/day1/abyss_yeast/ to your own folder.
+
    ```bash
-cp -r /mnt/lab/Data/day1/abyss_yeast/ ./
+   cp -r /mnt/lab/Data/day1/abyss_yeast/ ./
    ```
+   
 2. **Explore the results** in your working directory:
+
    ```bash
    cd abyss_yeast/
    ls -l
    head coverage.hist
    ```
+   
 3. Obtain assembly statistics using the infoseq tool (from the EMBOSS package) *infoseq -help* to visualize the options
    ```bash
-    infoseq -only -name -length -pgc yeast_k94-scaffolds.fa> table.out
+        infoseq -only -name -length -pgc yeast_k94-scaffolds.fa> table.out
    ```
 This generates a table listing each contig’s name, length, and GC content. 🧩 Visualize **table.out**
 
 <font color="green">
 
-### 🧩
-4. Analyze the results:
+### 🧩 4. Analyze the results:
 
 * Longest contig: **sort -n -k2 table.out**
 * Number of contigs > 1 kb: **awk \'$2>1000\' table.out | wc -l**
@@ -116,7 +119,7 @@ into our working directory.
   7.2. Run blastn
   
   ```bash
-  blastn -query abyss_yeast/yeast_k94-scaffolds.fa -subject YEAST_chromosome.fas -outfmt '6 std qlen slen' -out yeastk94_vs_Ref.blast
+blastn -query abyss_yeast/yeast_k94-scaffolds.fa -subject YEAST_chromosome.fas -outfmt '6 std qlen slen' -out yeastk94_vs_Ref.blast
   ```
 #### 🧩 7.3. Analyze the results:
 
@@ -136,17 +139,20 @@ into our working directory.
 ## 🧬 Evaluation of long-read assemblies
 
 1. Visualize the final assemblies generated with Flye and copy the final output to your directory:
+
    ```bash
   ls /mnt/lab/Data/day1/flye_yeast/
   cp /mnt/lab/Data/day1/flye_yeast/assembly.fasta ./
    ```
 
 2. Compute basic statistics using abyss-fac:
+
    ```bash
 abyss-fac assembly.fasta
    ```
 
 3. Compare your assembly to the reference genome (*S. cerevisiae* strain S288c) using BLASTN, and examine how many contigs align to each chromosome.
+
    ```bash
 blastn -query assembly.fasta -subject YEAST_chromosome.fas -evalue 1e-200 -outfmt "6 std qlen slen" > yeastFly_vs_Ref.blast
    ```
@@ -155,11 +161,11 @@ blastn -query assembly.fasta -subject YEAST_chromosome.fas -evalue 1e-200 -outfm
     Discuss the BLAST results obtained.
 Examine how well your assembled contigs align with the reference genome. Consider whether the alignments are continuous or fragmented, and if some chromosomes appear more fragmented than others.
     
-    Filter meaningful hits (for example, HSPs >10 kb) and analyze how fragmented each chromosome is
+   Filter meaningful hits (for example, HSPs >10 kb) and analyze how fragmented each chromosome is
 
 ✅ 
  
-- ```bash
+  ```bash
   # View the first lines of the BLAST output
   head yeastFly_vs_Ref.blast 
   
@@ -182,10 +188,7 @@ This program performs pairwise nucleotide alignments between large sequences, su
    ```bash
 # (Optional) Repeat with the S288c reference genome
 nucmer YEAST_chromosome.fas assembly.fasta -prefix assembly_vs_S288c
-
-
    ```
-
 
 - The command will produce an output file with the extension .delta, which contains the alignment information.
 
