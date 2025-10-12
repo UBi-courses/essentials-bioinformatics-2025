@@ -1,11 +1,5 @@
 # Essentials of Bioinformatics for Genomic Analysis
 
-![Course logo](img/logo.jpg)
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/UBi-courses/essentials-bioinformatics-2025/main/img/logo.png" alt="Course logo" width="200"/>
-</p>
-
 
 
 📅 Date: October 13–17, 2025  
@@ -90,4 +84,8 @@ We recommend using **Conda** or **Docker** to ensure reproducibility.
 ---
 
 ✉️ For questions during the course, please use the course Slack/Discord channel.
+
+
+
+![Course logo](img/logo.jpg)
 
