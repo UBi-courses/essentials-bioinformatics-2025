@@ -396,7 +396,9 @@ assemblies.</p>
 <p>Before starting this practical, make sure to activate the conda
 environment that contains the required programs. This ensures that all
 tools are available from the command line.</p>
-<pre class="bash"><code>conda activate day1</code></pre>
+<pre><code>```bash
+conda activate day1
+```</code></pre>
 <hr />
 </div>
 <div id="understanding-assembly-output-files" class="section level2">
@@ -425,14 +427,16 @@ folder.</p>
 directory:</p>
 <pre class="bash"><code>cd abyss_yeast/
 ls -l
-head coverage.hist</code></pre></li>
-<li><p>Obtain assembly statistics using the infoseq tool (from the
-EMBOSS package) <em>infoseq -help</em> to visualize the options</p>
+head coverage.hist</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Obtain assembly statistics using the infoseq tool (from the EMBOSS
+package) <em>infoseq -help</em> to visualize the options</li>
+</ol>
 <pre class="bash"><code>infoseq -only -name -length -pgc yeast_k94-scaffolds.fa&gt; table.out</code></pre>
 <p>This generates a table listing each contig’s name, length, and GC
-content.</p></li>
+content.</p>
+<p>🧩 Visualize <strong>table.out</strong>.</p></li>
 </ol>
-<p>🧩 Visualize <strong>table.out</strong>.</p>
 <p><font color="green"></p>
 <div id="analyze-the-results" class="section level4">
 <h4>🧩 4. Analyze the results:</h4>
@@ -456,7 +460,7 @@ most common and relevant assembly statistics. One of these tools is
 abyss-fac, which summarizes key metrics such as the total assembly
 length, number of contigs, N50, L50, and GC content in a single
 report.</p>
-<pre class="bash"><code> abyss-fac yeast_k94-scaffolds.fa</code></pre></li>
+<pre class="bash"><code>  abyss-fac yeast_k94-scaffolds.fa</code></pre></li>
 <li><p>Generate a sub-assembly containing only contigs &gt;2 kb:</p>
 <pre class="bash"><code>awk &#39;$2&gt;2000 {print $1}&#39; table.out &gt; names.txt
 # con grep 
@@ -483,10 +487,8 @@ cp /mnt/lab/Data/day1/genoma_ncbi/YEAST_chromosome.fas ./</code></pre></li>
 <li><p>🧩 7.3. <strong>Analyze the results:</strong></p>
 <pre class="bash"><code># View the first lines of the BLAST output
 head yeastk94_vs_Ref.blast 
-
 # View only alignments longer than 10 Kb
 awk &#39;$4 &gt; 10000&#39; yeastk94_vs_Ref.blast 
-
 # View only alignments longer than 10 Kb corresponding to Chromosome VIII
 awk &#39;$4 &gt; 10000&#39; yeastk94_vs_Ref.blast | grep C_VIII</code></pre></li>
 </ul>
@@ -497,8 +499,8 @@ awk &#39;$4 &gt; 10000&#39; yeastk94_vs_Ref.blast | grep C_VIII</code></pre></li
 <ol style="list-style-type: decimal">
 <li><p>Visualize the final assemblies generated with Flye and copy the
 final output to your directory:</p>
-<pre class="bash"><code>  ls /mnt/lab/Data/day1/flye_yeast/
-  cp /mnt/lab/Data/day1/flye_yeast/assembly.fasta ./</code></pre></li>
+<pre class="bash"><code>ls /mnt/lab/Data/day1/flye_yeast/
+cp /mnt/lab/Data/day1/flye_yeast/assembly.fasta ./</code></pre></li>
 <li><p>Compute basic statistics using abyss-fac:</p>
 <pre class="bash"><code>abyss-fac assembly.fasta</code></pre></li>
 <li><p>Compare your assembly to the reference genome (<em>S.
@@ -509,10 +511,10 @@ align to each chromosome.</p>
 <p>Discuss the BLAST results obtained. Examine how well your assembled
 contigs align with the reference genome. Consider whether the alignments
 are continuous or fragmented, and if some chromosomes appear more
-fragmented than others.</p></li>
-</ol>
+fragmented than others.</p>
 <p>Filter meaningful hits (for example, HSPs &gt;10 kb) and analyze how
-fragmented each chromosome is</p>
+fragmented each chromosome is</p></li>
+</ol>
 <p>✅</p>
 <pre class="bash"><code># View the first lines of the BLAST output
 head yeastFly_vs_Ref.blast 
