@@ -35,7 +35,7 @@ Each day includes:
 ---
 
 ### **Day 3 – Variant Calling**
-- **Slides**: [Download PDF](slides/day3_variant_calling.pdf)  
+- **Slides**: [Download PDF](slides/IntroNGS_GATK.pdf)  
 - **Practicals**:  
   - [Practical 7/8: Variant Calling, Annotation and Interpretation](https://tropical-eyelash-0b4.notion.site/Pipeline-de-detecci-n-de-variantes-en-WES-WGS-272513bad2e58151911cd7885cc786e2)  
    
