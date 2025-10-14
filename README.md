@@ -27,7 +27,7 @@ Each day includes:
 ---
 
 ### **Day 2 – Transcriptomics**
-- **Slides**: [Download PDF](slides/day2_transcriptomics.pdf)  
+- **Slides**: [Intro transcriptomics](slides/day2_transcriptomics.pdf)  
 - **Practicals**:  
   - [Practical 1: IGV_visualization](practicos/day2/2A_IGV_visualization/practico2A.md)  
   - [Practical 2: Long Read quantification](practicos/day2/2BC_Long_Read_Quantification/practico2BC.md)  
@@ -35,7 +35,8 @@ Each day includes:
 ---
 
 ### **Day 3 – Variant Calling**
-- **Slides**: [Download PDF](slides/IntroNGS_GATK.pdf)  
+- **Slides**: [Intro Variant calling](slides/IntroNGS_GATK.pdf)
+- **Slides**: [Variant calling applications](slides/AplicacionesVC.pdf.pdf)  
 - **Practicals**:  
   - [Practical 7/8: Variant Calling, Annotation and Interpretation](https://tropical-eyelash-0b4.notion.site/Pipeline-de-detecci-n-de-variantes-en-WES-WGS-272513bad2e58151911cd7885cc786e2)  
    
