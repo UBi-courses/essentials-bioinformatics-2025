@@ -37,8 +37,8 @@ Each day includes:
 ### **Day 3 – Variant Calling**
 - **Slides**: [Download PDF](slides/day3_variant_calling.pdf)  
 - **Practicals**:  
-  - [Practical 7: SNP and Indel Calling](practicos/day3/07_variant_calling/enunciado.md)  
-  - [Practical 8: Variant Filtering and Annotation](practicos/day3/08_variant_annotation/enunciado.md)  
+  - [Practical 7/8: Variant Calling](https://tropical-eyelash-0b4.notion.site/Pipeline-de-detecci-n-de-variantes-en-WES-WGS-272513bad2e58151911cd7885cc786e2)  
+   
 
 ---
 
