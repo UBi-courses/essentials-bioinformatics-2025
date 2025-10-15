@@ -19,6 +19,7 @@ Each day includes:
 - **Slides**: [Introducción al curso](slides/Presentacion_curso_2025.pdf)
 - **Slides**: [Ensamblaje genómico](slides/ensamblaje.pdf)  
 - **Practicals**:  
+  - **Slides**: [Phred score](slides/Practico_ensamblaje_Calidad.pdf)
   - [Practical 1: Sequence preprocessing](practicos/day1/01_sequence_preprocessing/enunciado.md)  
   - [Practical 2: Genome assembly](practicos/day1/02_genome_assembly/enunciado.md)  
   - [Practical 3: Assembly evaluation](practicos/day1/03_assembly_evaluation/enunciado.md)  
@@ -27,7 +28,7 @@ Each day includes:
 ---
 
 ### **Day 2 – Transcriptomics**
-- **Slides**: [Intro transcriptomics](slides/day2_transcriptomics.pdf)  
+- **Slides**: [Intro transcriptomics](slides/transcriptomics_intro.pdf)  
 - **Practicals**:  
   - [Practical 1: IGV_visualization](practicos/day2/2A_IGV_visualization/practico2A.md)  
   - [Practical 2: Long Read quantification](practicos/day2/2BC_Long_Read_Quantification/practico2BC.md)  
