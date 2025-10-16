@@ -44,7 +44,7 @@ grep -c ">" *.faa | sort -t':' -k2,2n
 For the NCBI database, there are different ways to obtain genomes, for example:
 
 #### NCBI Datasets (Command-Line Interface)
-NCBI Datasets is the latest CLI for downloading genomes and annotations that lets you search and fetch genome assemblies, and download sequences (genomic, protein) and metadata.
+⛔ NCBI Datasets is the latest CLI for downloading genomes and annotations that lets you search and fetch genome assemblies, and download sequences (genomic, protein) and metadata.
 
 ```bash
 # Example Datasets commands
