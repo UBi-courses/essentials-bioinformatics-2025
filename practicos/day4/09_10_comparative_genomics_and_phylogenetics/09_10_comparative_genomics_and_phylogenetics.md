@@ -1,20 +1,12 @@
 # 🧮 Practical Session 04 – Comparative Genomics
 
-<svg width="100%" height="4"><rect width="100%" height="4" fill="#d0d7de"/></svg>
-
 ## Introduction
-
----
 
 Comparative genomics links genome differences to evolution and function. Conserved genes point to essential roles, while lineage-restricted or rapidly evolving genes can indicate adaptation. In this practical session we start by surveying the dataset, check origin and reliability, group genes into orthogroups to compare species, and end with a test on protein FtsZ to connect results to function.
 
 We will work with a pre-selected set of complete and reference genomes from Pseudomonadota (formerly known as Proteobacteria). These genomes were obtained from the NCBI GenBank database, from which all encoded proteins were downloaded. The corresponding FASTA files can be found in the `~/essentials_bioinformatics_2025/day4/dataset/` folder.
 
-<svg width="100%" height="4"><rect width="100%" height="4" fill="#d0d7de"/></svg>
-
 ## Part 1: Initial Data Exploration
-
----
 
 ### - Count Available Genomes
 Before we run any tools, we need a basic sense of the dataset. Open a terminal, go to `~/essentials_bioinformatics/day4/dataset`, and count how many genomes are there. Knowing this number helps us choose an analysis strategy that fits the size of the data.
@@ -23,8 +15,6 @@ Before we run any tools, we need a basic sense of the dataset. Open a terminal, 
 cd ~/essentials_bioinformatics_2025/day4/dataset/
 ls *.faa | wc -l
 ```
-
----
 
 ### - Explore Species Diversity
 Identify a few species using the taxonomic sampling table in Bash.
@@ -43,17 +33,11 @@ You can press **q** to quit `less`.
 grep -c ">" *.faa | sort -t':' -k2,2n
 ```
 
-<svg width="100%" height="4"><rect width="100%" height="4" fill="#d0d7de"/></svg>
-
 ## Part 2: Genomic Databases and Download Options
-
----
 
 ### - NCBI Genome Database Overview
 
 ℹ️ It is possible to download assembled genomes/proteomes obtained by different research centers and deposited in various public databases. The NCBI (United States), ENA (Europe), and DDBJ (Japan) databases contain annotated and unannotated genomes from organisms across all domains of life and viruses, and they synchronize daily, containing the same information. There are also organism-specific databases; for bacteria, some of the most commonly used are IMG/M (Integrated Microbial Genomes & Microbiomes) and PATRIC/BC-BRC.
-
----
 
 ### - NCBI Data Access Methods
 
@@ -77,8 +61,6 @@ More information: https://www.ncbi.nlm.nih.gov/datasets/docs/
 #### NCBI Genome Web Interface
 Another option is through the NCBI Genome web interface: https://www.ncbi.nlm.nih.gov/datasets/genome/
 
----
-
 ### - Explore NCBI Genome Database
 Visit the NCBI Genome website, search for genomes corresponding to the phylum Pseudomonadota, and use the **Filters** to refine your results.
 
@@ -99,8 +81,6 @@ Reference genomes are usually high-quality assemblies selected as the standard f
 
 🧩 **How many correspond to genomes assembled from metagenomes?**
 
----
-
 ### - File Types and Formats
 Explore the **Download Package** options.
 
@@ -108,11 +88,7 @@ Explore the **Download Package** options.
 
 🧩 **Which file type corresponds to those stored in `~/essentials_bioinformatics_2025/day4/dataset/`?**
 
-<svg width="100%" height="4"><rect width="100%" height="4" fill="#d0d7de"/></svg>
-
 ## Part 3: Ortholog Identification
-
----
 
 ### - Why Ortholog Identification Matters
 
@@ -127,13 +103,9 @@ Identifying orthologs across a set of genomes is one of the key tasks in compara
 
 The difficulties and strategies differ when we compare strains within a species and when we compare bacteria with archaea. In this practical session, we will work at an intermediate level with representative species from different classes within the bacterial phylum Pseudomonadota.
 
----
-
 ### - OrthoFinder Tool
 
 ℹ️ We will use OrthoFinder (https://github.com/davidemms/OrthoFinder), a comparative genomics tool that clusters genes into orthogroups, produces useful count tables and summaries, and works well at this taxonomic level and with our data volume. An orthogroup is the full set of proteins across the species in our dataset that descend from one ancestral gene. This set can include strict orthologs and also extra copies created by duplications inside a lineage.
-
----
 
 ### - OrthoFinder Analysis
 
@@ -187,9 +159,12 @@ sum(apply(mat, 1, function(x) all(x == 1)))
 
 ## Part 4: FtsZ Protein Case Study
 
----
-
 We will now focus on the FtsZ protein, which plays an essential role in cell division in the vast majority of known bacteria. We will identify the orthogroup that contains the *E. coli* FtsZ protein (AAC73206.1) and summarize its distribution. Examining its orthogroup lets us confirm the global patterns and notice exceptions that may point to interesting biology.
+
+```bash
+# Open R
+R
+```
 
 ```R
 # Read the orthogroup membership table
@@ -222,8 +197,6 @@ sum(fts_counts > 1)
 <svg width="100%" height="4"><rect width="100%" height="4" fill="#d0d7de"/></svg>
 
 ## Part 5: Alignment of FtsZ
-
----
 
 Molecular sequences must be aligned before they can be used to build phylogenies.
 
@@ -289,8 +262,6 @@ aliview
 <svg width="100%" height="4"><rect width="100%" height="4" fill="#d0d7de"/></svg>
 
 ## Part 6: Phylogeny of FtsZ
-
----
 
 ℹ️ The phylogeny will be obtained using the maximum likelihood method. It is based on the idea that the tree that has the highest probability of producing the sequences at the tips of the tree is the tree that is the “most likely” to be correct: this is called the Maximum Likelihood (ML) Tree.
 
