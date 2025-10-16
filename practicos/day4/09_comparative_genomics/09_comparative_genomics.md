@@ -109,7 +109,7 @@ The difficulties and strategies differ when we compare strains within a species 
 
 ### - OrthoFinder Analysis
 
-We will not run OrthoFinder in class because it might take several hours. We have already executed it on the genomes in the dataset directory using:
+⛔ We will not run OrthoFinder in class because it might take several hours. We have already executed it on the genomes in the dataset directory using:
 
 ```bash
 orthofinder -f ~/essentials_bioinformatics_2025/day4/dataset/
