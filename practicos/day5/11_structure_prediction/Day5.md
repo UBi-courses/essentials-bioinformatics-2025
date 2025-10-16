@@ -44,16 +44,21 @@ cd day5
 
 
 
-### Blah
+### Structure examination
 
 &nbsp;
 
 
 <font color="green">
 
-### 🧩 iujuuu
+### 🧩 Load PDB files of single chains from FtsZ
+conda activate day5
+cd Datitos/FtsZ/Singlechains
+chimerax *pdb &
 
-content pirulae
+
+--- we will play together interactively
+
 
 </font>
 
