@@ -50,8 +50,8 @@ Each day includes:
 ### **Day 4 – Comparative Genomics and Phylogeny**
 - **Slides**: [Download PDF](slides/day4_comparative_phylogeny.pdf)  
 - **Practicals**:  
-  - [Practical 9: Comparative Genomics](practicos/day4/09_comparative_genomics/enunciado.md)  
-  - [Practical 10: Phylogenetic Analysis](practicos/day4/10_phylogenetics/enunciado.md)  
+  - [Practical 9: Comparative Genomics](practicos/day4/09_comparative_genomics/09_comparative_genomics.md)  
+  - [Practical 10: Phylogenetic Analysis](practicos/day4/10_phylogenetics/10_phylogenetics.md)  
 
 ---
 
