@@ -53,7 +53,9 @@ cd day5
 
 ### 🧩 Load PDB files of single chains from FtsZ
 conda activate day5
+
 cd Datitos/FtsZ/Singlechains
+
 chimerax *pdb &
 
 
