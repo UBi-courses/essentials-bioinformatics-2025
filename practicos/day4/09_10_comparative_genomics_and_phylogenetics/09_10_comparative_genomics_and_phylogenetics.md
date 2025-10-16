@@ -138,6 +138,11 @@ less /mnt/lab/Data/day4/OrthoFinder/Results_Oct09/Orthogroups/Orthogroups.GeneCo
 
 ℹ️ Orthogroups present in all species approximate the core genome, which is often enriched for housekeeping and essential functions. Orthogroups with exactly one copy in every species are strong markers for species trees, because they minimize problems caused by paralogs. In the next step, we will load the OrthoFinder tables into R and filter them to find the core orthogroups and the single-copy orthogroups across the dataset.
 
+```bash
+# Open R
+R
+```
+
 ```R
 # Read the gene count matrix
 counts <- read.delim("/mnt/lab/Data/day4/OrthoFinder/Results_Oct09/Orthogroups/Orthogroups.GeneCount.tsv", check.names=FALSE)
@@ -160,11 +165,6 @@ sum(apply(mat, 1, function(x) all(x == 1)))
 ## Part 4: FtsZ Protein Case Study
 
 We will now focus on the FtsZ protein, which plays an essential role in cell division in the vast majority of known bacteria. We will identify the orthogroup that contains the *E. coli* FtsZ protein (AAC73206.1) and summarize its distribution. Examining its orthogroup lets us confirm the global patterns and notice exceptions that may point to interesting biology.
-
-```bash
-# Open R
-R
-```
 
 ```R
 # Read the orthogroup membership table
@@ -194,7 +194,10 @@ sum(fts_counts > 1)
 
 🧩 **What can we say about the distribution of FtsZ in Pseudomonadota?**
 
-<svg width="100%" height="4"><rect width="100%" height="4" fill="#d0d7de"/></svg>
+```R
+# Exit R
+q()
+```
 
 ## Part 5: Alignment of FtsZ
 
@@ -254,6 +257,7 @@ trimal -in OG0000617.aln -out OG0000617.trim -gt 0.2
 ### - Visualization of trimmed FtsZ alignment
 
 ```bash
+# Run AliView
 aliview
 ```
 
