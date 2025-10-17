@@ -69,9 +69,7 @@ chimerax *pdb &
 
 &nbsp;
 
-No debo trabajar de noche, soy un bicho matinal LCDLL
-- `cosoperez` is coso.  
-- `mojochucu` is `.chucu` mojo.  
+
 
 ##(B)
 
