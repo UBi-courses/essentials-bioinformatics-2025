@@ -61,7 +61,8 @@ chimerax *pdb &
 
 --- we will play together interactively
 
-linsi --maxiterate 16 --inputorder SingleChains_andSomeRefProteomes.fa   > SingleChains_andSomeRefProteomes_linsiOriOrder.fas
+
+
 
 
 </font>
@@ -77,8 +78,7 @@ No debo trabajar de noche, soy un bicho matinal LCDLL
 ⛔  workflow:
 ```bash
 
-# cd Fusexins
-
+# cd Datitos/Fusexins
 
 ```
 
@@ -87,120 +87,49 @@ No debo trabajar de noche, soy un bicho matinal LCDLL
 
 ```bash
 # 
-foldmason easy-msa *pdb FtsZ_results.afa tmpFolder --report-mode 1
+foldmason easy-msa *pdb FusexinsFoldmason_results.afa tmpFolder --report-mode 1
 ```
 
 
-✅
-```bash
-# You can list them using:
-ls
-
-# To preview the first few lines of the first file:
-head ERR049934_1.fastq
-
-# To visualize the entire file, use one of the following commands:
-more ERR049934_2.fastq
-# or
-less ERR049934_2.fastq
-
-# Press Ctrl + C (or 'q' if using 'less') to exit the viewer.
-```
-
-### ℹ️ Quality control
-High-throughput sequencing generates millions of reads, but sequencing technologies are not error-free. Each instrument may introduce different errors. Quality control (QC) is therefore an essential first step.
-
-Phred score
-The Phred quality score (Q) measures base call accuracy, that is, how confident the sequencer is in identifying each nucleotide (A, T, C, or G) during the reading process. Each “base call” corresponds to a single position in a read where the sequencing instrument assigns a nucleotide based on fluorescence intensity or signal interpretation.  
-
-📌 The Phred quality score (Q) measures base call accuracy:
-
-$𝑄 = −10log 10(𝑃)$
-
-Where *P* is the probability of error.
-
-* Q10 → 1 error every 10 bases (10% error)
-* Q20 → 1 error every 100 bases (1% error)
-* Q30 → 1 error every 1000 bases (0.1% error)
-
-👉 Discussion: What is the lowest Phred score you would expect in your reads?
-
-
-**Sequencing depth** (C) is the average number of times each nucleotide is sequenced:
-
-$𝐶=𝑁L/𝐺$
-
-Where:
-N = number of reads
-L = read length
-G = genome size
-
-From C we can estimate:
-
-Expected coverage: $1−𝑒^-𝐶$
-Expected number of contigs: $𝑁𝑒^−𝐶$
-
-
-###  FastQC
-https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
-
-FastQC provides a quick, graphical summary of sequence quality. Instead of inspecting each read, it summarizes distributions, helping us detect:
-
-- Low mean quality
-- Positional quality drop-off (e.g. at the 3′ end)
-- Overrepresented sequences
-
-✅ To run FastQC:
+✅ alignment of multiple sequences with mafft, but using the 3di alphabet
 
 ```bash
-fastqc ERR049934_1.fastq ERR049934_2.fastq
-```
-This generates .html reports viewable in a browser.
+# You can align the 3Di sequences obtained from foldmason (gaps removed for you in a new file), but providing mafft a new scoring matrix, different from PAM or BLOSUM (remember Daniela's talk?)
 
-✅ To visualize it, you can locate the files using the file browser and open them with a web browser, or use the terminal to open them:
-```bash
-# example
-firefox ERR049934_1.fastqc.html 
-```
+linsi --aamatrix mat3di.out Fsxnseqs3Di.fasta > Fsxnseqs3Di_linsi.afa
 
-![FastQC report](img/fastqc.png)
-&nbsp;
+trimal -in Fsxnseqs3Di_linsi.afa -out Fsxnseqs3Di_linsi_gt01.fa -gt 0.1
 
-## Filtering and trimming reads
-### Sickle
-Sickle filters and trims reads based on quality and length.
+iqtree3 -s Fsxnseqs3Di_linsi_gt01.fa -pre Fsxnseqs3Di_linsi_gt01TREE -m MFP -mset LG,WAG,EX_EHO,PMB,Q.3Di.AF,Q.3Di.LLM,Q.LG,Q.pfam,Q.pfam-gb -nt AUTO -bb 1000 -alrt 1000
 
-✅ Example command for paired-end reads:
+#Compute and compare sequence trees and structural trees (both aminoacids and 3di)
 
-```bash
-sickle pe -f ERR049934_1.fastq  -r ERR049934_2.fastq -t sanger  -o trimmed_pe1.fastq   -p trimmed_pe2.fastq   -s trimmed_se.fastq  -q 27 -l 90
+linsi FsxnseqsAA.fasta > FsxnseqsAA_linsi.afa
+
+trimal -in FsxnseqsAA_linsi.afa -out FsxnseqsAA_linsi_gt01.fa -gt 0.1
+
+iqtree3 -s FsxnseqsAA_linsi_gt01.fa -pre FsxnseqsAA_linsi_gt01TREE -m MFP -mset LG,WAG,EX_EHO,PMB,Q.3Di.AF,Q.3Di.LLM,Q.LG,Q.pfam,Q.pfam-gb -nt AUTO -bb 1000 -alrt 1000
+
+.
 ```
 
-Parameters:
+#that was for sequence alignments, now use the structural alignments from FoldMason
 
--f / -r → input FASTQ files (forward, reverse)
--t → quality encoding type (e.g. sanger)
--o / -p → trimmed paired reads output
--s → orphan reads output (singletons)
--q → quality threshold
--l → minimum length threshold
+iqtree3 -s FOLDMASON_AA.fa -pre FOLDMASON_AA_TREE -m MFP -mset LG,WAG,EX_EHO,PMB,Q.3Di.AF,Q.3Di.LLM,Q.LG,Q.pfam,Q.pfam-gb -nt AUTO -bb 1000 -alrt 1000
 
-✅ After trimming, rerun FastQC to check improvements:
+iqtree3 -s FOLDMASON_3Di.fa -pre FOLDMASON_3DiTREE -m MFP -mset LG,WAG,EX_EHO,PMB,Q.3Di.AF,Q.3Di.LLM,Q.LG,Q.pfam,Q.pfam-gb -nt AUTO -bb 1000 -alrt 1000
 
-```bash
-fastqc trimmed_pe1.fastq trimmed_pe2.fastq
-```
-Visualize the .html reports viewable in a browser.
 
-<font color="green">
+### ℹ️ Now play with the four trees, compare topologies and supports. Remember we're dealing with homology beyond sequence recognition. The story is nice. 
 
-### 🧩 Analyzing the 
+
+### 🧩  
 
 
 </font>
 
 
 ### Summary of this session
-By the end of this practical, you should:
+By the end of this practical, you should be happy
 
 
