@@ -89,8 +89,16 @@ We recommend using **Conda** or **Docker** to ensure reproducibility.
 - Dr. Gonzalo Bello -Instituto Oswaldo Cruz (Brazil) 🇧🇷 
 ---
 
-✉️ For questions during the course, please use the course Slack/Discord channel.
+## Encuesta de satisfacción:
 
+https://docs.google.com/forms/d/e/1FAIpQLSca4EyP6R24WuY4zhNUG-_jhYb5ctBMtHVLyjWMkrP-4BzdvA/viewform?usp=dialog
+
+## Examen:
+
+
+
+
+✉️ For questions during the course, please use the course Slack/Discord channel.
 
 
 ![Course logo](img/logo.jpg)
