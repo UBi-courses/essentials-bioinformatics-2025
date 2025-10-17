@@ -77,7 +77,7 @@ We recommend using **Conda** or **Docker** to ensure reproducibility.
 - Dra. Tamara Fernández - Institut Pasteur de Montevideo / Universidad Católica  
 - Dr. Pablo Fresia – Institut Pasteur de Montevideo / Universidad de la República 
 - Dr. Martín Graña – Institut Pasteur de Montevideo  
-- Dra. Daniela Megrián – Institut Pasteur de Montevideo  
+- Dra. Daniela Megrian – Institut Pasteur de Montevideo  
 - Dr. Hugo Naya – Institut Pasteur de Montevideo / Universidad de la República  
 - Dra. Natalia Rego – Institut Pasteur de Montevideo / Universidad de la República  
 - Dra. Camila Simoes – Institut Pasteur de Montevideo  
@@ -95,11 +95,8 @@ https://docs.google.com/forms/d/e/1FAIpQLSca4EyP6R24WuY4zhNUG-_jhYb5ctBMtHVLyjWM
 
 ## Examen:
 
-
-
+https://docs.google.com/forms/d/e/1FAIpQLSfjDcFbm47OPL6Mw1kvHLz3CrV6E4RAVwe4NTdpLdBV0GRIOg/viewform?usp=header
 
 ✉️ For questions during the course, please use the course Slack/Discord channel.
 
-
 ![Course logo](img/logo.jpg)
-
