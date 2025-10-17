@@ -1,8 +1,7 @@
-# 🧮 Practical 02 – Protein 3D structures and evolution
+# 🧮 Practical 05 – Protein 3D structures and evolution
 
 ## Introduction
 
-Holis
 
 ![short insert](img/shor-insert.png)  
 &nbsp;
@@ -12,12 +11,13 @@ Protein 3D structures evolve more slowly than sequence, preserved through evolut
 Today we will:
 A)
 - Visualize and examine different structural features of some selected structures of the FtsZ family
-- Perform structural alignments using the graphical interface
-- Analyse FtsZ family in the light of sequence variation for the FtsZ family, using chimeraX and some pre computed alignments to map over protein stuctures
+- Perform structural alignments using the graphical interface within chimeraX
+- Analyze FtsZ 3D structures in the light of sequence variation of the family, using chimeraX and some pre computed sequence alignments to map over protein structures
 
 B)
-- Align protein very distant proteins from all Life domains, using sequence and structure
-- Compute phylogenetic trees for these sequences and compare tree topologies obtained under different models and alignments
+- Compute multiple alignments of very distant proteins from all Life domains, using sequence and structure
+- Compute phylogenetic trees for these alignments and compare tree topologies obtained under different models
+- Examine tree topologies and support for sequence- and structure-based aminoacid alignments, and structural alignments using the 3Di alphabet
 
 ---
 ## Before we start
@@ -26,23 +26,21 @@ Make sure you are in the correct working directory to run this practical.
 You will need to do this every day before starting the exercises.
 ```bash
 # Enter the course folder
-cd essentials_bioinformatics_2025/
+cd essentials_bioinformatics_2025/day5
 
 # List the contents
 ls
 
-# Go the today's working directory:
-cd day5
+#bring today's stuff to this folder
 cp -rp /mnt/lab/Data/day5/Datitos/ .
-cd Datitos/FtsZ/SingleChains/
 ```
-
+#########################
+##(A)
 ## Files with 3D information from the PDB
 
 ### ℹ️ PDB codes, PDB/CIF formats
 
 📘 For details on PDB/CIF formats [https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdbx-mmcif)
-
 
 
 
@@ -56,26 +54,33 @@ cd Datitos/FtsZ/SingleChains/
 ### 🧩 Load PDB files of single chains from FtsZ
 conda activate day5
 
+cd Datitos/FtsZ/SingleChains/
+
 chimerax *pdb &
 
 
 --- we will play together interactively
+
+linsi --maxiterate 16 --inputorder SingleChains_andSomeRefProteomes.fa   > SingleChains_andSomeRefProteomes_linsiOriOrder.fas
 
 
 </font>
 
 &nbsp;
 
-Content pirulae
+No debo trabajar de noche, soy un bicho matinal LCDLL
 - `cosoperez` is coso.  
 - `mojochucu` is `.chucu` mojo.  
 
-⛔ Example workflow:
+##(B)
+
+⛔  workflow:
 ```bash
 
-# linsi --maxiterate 16 --inputorder SingleChains_andSomeRefProteomes.fa   > SingleChains_andSomeRefProteomes_linsiOriOrder.fas
+# cd Fusexins
+
+
 ```
-Alternatively, fastq-dump can take the accession number directly, 
 
 ✅ alignment of multiple structures with foldmason, generating aminoacid and 3di alphabet alignments:
 
@@ -85,13 +90,6 @@ Alternatively, fastq-dump can take the accession number directly,
 foldmason easy-msa *pdb FtsZ_results.afa tmpFolder --report-mode 1
 ```
 
-
-Here:
-
--X 1000000 → download only 1 million reads
---split-files → generate two FASTQ files for paired-end data.
-
-After running fastq-dump, two FASTQ files will be generated in your working directory.
 
 ✅
 ```bash
@@ -196,15 +194,8 @@ Visualize the .html reports viewable in a browser.
 
 <font color="green">
 
-### 🧩 Analyzing the FastQC report
+### 🧩 Analyzing the 
 
-Open the FastQC HTML report generated for your dataset and explore the main quality modules.
-
-1. How does the per-base quality score change along the length of the reads? Are there regions with noticeably lower quality?
-
-2. Does the GC content distribution look uniform or show irregular peaks? What could that indicate?
-
-3. What happens with the sequence length distribution? Are all reads the same length or does it vary across the dataset?
 
 </font>
 
@@ -212,8 +203,4 @@ Open the FastQC HTML report generated for your dataset and explore the main qual
 ### Summary of this session
 By the end of this practical, you should:
 
-* Understand how paired-end reads are generated
-* Be familiar with the FASTQ format
-* Be able to download data from SRA using the SRA Toolkit
-* Run FastQC for quality control
-* Perform trimming and filtering using Sickle
+
